@@ -22,6 +22,8 @@ jobs:
         shell: bash
         run: |
           docker-compose up -d
+      - name: curl
+        run: curl http://localhost:8000
       - uses: nev7n/wait_for_response@v1
         with:
           url: 'http://localhost:8000'
