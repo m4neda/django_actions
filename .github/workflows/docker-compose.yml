@@ -22,8 +22,13 @@ jobs:
         shell: bash
         run: |
           docker-compose up -d
+      - uses: actions/checkout@v2
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: curl
-        run: curl http://localhost:8000
+        uses: wei/curl@master
+        with:
+          args: http://localhost:8000
       - uses: nev7n/wait_for_response@v1
         with:
           url: 'http://localhost:8000'
